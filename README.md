@@ -1,2 +1,2 @@
-# btholt-cs
+# algorithms-exercises
 Created with CodeSandbox
