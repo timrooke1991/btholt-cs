@@ -14,21 +14,17 @@
 */
 
 function insertionSort(nums) {
-  let swapped = false;
+  for (let i = 0; i < nums.length; i++) {
+    let currentNumber = nums[i];
 
-  do {
-    swapped = false;
-    for (let i = 0; i < nums.length; i++) {
-      let currentNumber = nums[i];
-      let nextNumber = nums[i + 1];
-
-      if (nextNumber < currentNumber) {
-        nums[i] = nextNumber;
-        nums[i + 1] = currentNumber;
-        swapped = true;
+    for (let j = i; j >= 0; j--) {
+      const numberToLeft = nums[j - 1];
+      if (currentNumber < numberToLeft) {
+        nums[j - 1] = currentNumber;
+        nums[j] = numberToLeft;
       }
     }
-  } while (swapped);
+  }
 
   console.log("Tims", nums);
   return nums;
