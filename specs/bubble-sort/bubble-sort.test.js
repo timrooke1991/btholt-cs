@@ -9,27 +9,31 @@
   swapping their places if the smaller index's value is larger than the larger
   index's. Continue looping through until all values are in ascending order
 */
+function swapNumbers(nums, currentIndex, nextIndex) {
+  const lowerNumber = nums[nextIndex];
+  const higherNumber = nums[currentIndex];
+  nums[currentIndex] = lowerNumber;
+  nums[nextIndex] = higherNumber;
+}
 
 function bubbleSort(nums) {
-  let didASwapOccur = null;
+  let arrayIsSorted = false;
 
-  while (didASwapOccur !== false) {
-    didASwapOccur = null;
+  while (arrayIsSorted === false) {
+    let didASwapOccur = false;
     for (let index = 0; index < nums.length; index++) {
       const currentIndex = index;
       const nextIndex = index + 1;
 
-      if (nums[currentIndex] > nums[nextIndex]) {
+      const isSwapRequired = nums[currentIndex] > nums[nextIndex];
+      if (isSwapRequired) {
         didASwapOccur = true;
-        const lowerNumber = nums[nextIndex];
-        const higherNumber = nums[currentIndex];
-        nums[currentIndex] = lowerNumber;
-        nums[nextIndex] = higherNumber;
+        swapNumbers(nums, currentIndex, nextIndex);
       }
     }
 
-    if (didASwapOccur === null) {
-      didASwapOccur = false;
+    if (!didASwapOccur) {
+      arrayIsSorted = true;
     }
   }
 

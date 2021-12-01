@@ -10,21 +10,10 @@
  */
 
 function nestedAdd(array) {
-  let sum = 0;
-
-  for (let i = 0; i < array.length; i++) {
-    let current = array[i];
-    if (Array.isArray(current)) {
-      sum += nestedAdd(current);
-    } else {
-      sum += current;
-    }
-  }
-
-  return sum;
+  // write code here
 }
 
-test("nested arrays addition", () => {
+test.skip("nested arrays addition", () => {
   expect(nestedAdd([1, 2, 3])).toEqual(6);
   expect(nestedAdd([1, [2], 3])).toEqual(6);
   expect(nestedAdd([[[[[[[[[5]]]]]]]]])).toEqual(5);
