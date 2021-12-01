@@ -8,7 +8,27 @@ function linearSearch(id, array) {
 }
 
 function binarySearch(id, array) {
-  // code goes here
+  let finished = false;
+  let output = null;
+  while (!finished) {
+    // Triggered if not found...
+    if (array.length < 1) {
+      finished = true;
+    }
+
+    let midpoint = Math.floor(array.length / 2);
+    let midpointId = array[midpoint] ? array[midpoint].id : null;
+    if (id === midpointId) {
+      finished = true;
+      output = array[midpoint];
+    } else if (id > midpointId) {
+      array.splice(0, midpoint);
+    } else {
+      array.splice(midpoint);
+    }
+  }
+
+  return output;
 }
 
 // unit tests
@@ -35,7 +55,7 @@ test.skip("linear search", function () {
   ).toBe(lookingFor);
 });
 
-test.skip("binary search", function () {
+test.only("binary search", function () {
   const lookingFor = { id: 23, name: "Brian" };
   expect(
     binarySearch(23, [
