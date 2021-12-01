@@ -5,6 +5,11 @@
 
 function linearSearch(id, array) {
   // code goes here
+  for (let item of array) {
+    if (item.id === id) return item;
+  }
+
+  return null;
 }
 
 function binarySearch(id, array) {
@@ -33,7 +38,7 @@ function binarySearch(id, array) {
 
 // unit tests
 // do not modify the below code
-test.skip("linear search", function () {
+test("linear search", function () {
   const lookingFor = { id: 5, name: "Brian" };
   expect(
     linearSearch(5, [
@@ -55,7 +60,7 @@ test.skip("linear search", function () {
   ).toBe(lookingFor);
 });
 
-test.only("binary search", function () {
+test("binary search", function () {
   const lookingFor = { id: 23, name: "Brian" };
   expect(
     binarySearch(23, [
