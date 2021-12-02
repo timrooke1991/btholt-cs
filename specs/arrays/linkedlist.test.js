@@ -51,7 +51,7 @@ class LinkedList {
     if (index >= this.length) return null;
     let current = this.head;
 
-    for (let i = 0; i <= index - 1; i++) {
+    for (let i = 0; i < index; i++) {
       current = current.next;
     }
 
@@ -74,6 +74,7 @@ class LinkedList {
         this.head = head.next;
       } else {
         this.head = null;
+        this.tail = null;
       }
 
       this.length--;
@@ -104,7 +105,7 @@ class Node {
 
 // unit tests
 // do not modify the below code
-describe.only("LinkedList", function () {
+describe("LinkedList", function () {
   const range = (length) =>
     Array.apply(null, { length: length }).map(Number.call, Number);
   const abcRange = (length) =>
