@@ -46,7 +46,7 @@ class ArrayList {
   delete(index) {
     // removes item from the array shifts the array
     for (let i = index; i < this.length; i++) {
-      this.data[index] = this.data[index + 1];
+      this.data[i] = this.data[i + 1];
     }
 
     delete this.data[this.length - 1];
@@ -56,7 +56,7 @@ class ArrayList {
 
 // unit tests
 // do not modify the below code
-describe.only("ArrayList", function () {
+describe("ArrayList", function () {
   const range = (length) =>
     Array.apply(null, { length: length }).map(Number.call, Number);
   const abcRange = (length) =>
