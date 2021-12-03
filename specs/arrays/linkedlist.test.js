@@ -104,7 +104,6 @@ class Node {
 }
 
 // unit tests
-// do not modify the below code
 describe("LinkedList", function () {
   const range = (length) =>
     Array.apply(null, { length: length }).map(Number.call, Number);
