@@ -77,7 +77,7 @@ class Node {
 
 // unit tests
 // do not modify the below code
-describe.only("Binary Search Tree", function () {
+describe("Binary Search Tree", function () {
   it("creates a correct tree", () => {
     const nums = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8];
     const tree = new Tree();
