@@ -1,27 +1,30 @@
 const preorderTraverse = (node, array) => {
-  // code goes here
   if (!node) return array;
   array.push(node.value);
-
-  const leftNums = preorderTraverse(node.left);
-  array.push(...leftNums);
-  const rightNums = preorderTraverse(node.right);
-  array.push(...rightNums);
-
+  array = preorderTraverse(node.left, array);
+  array = preorderTraverse(node.right, array);
   return array;
 };
 
 const inorderTraverse = (node, array) => {
-  // code goes here
+  if (!node) return array;
+  array = inorderTraverse(node.left, array);
+  array.push(node.value);
+  array = inorderTraverse(node.right, array);
+  return array;
 };
 
 const postorderTraverse = (node, array) => {
-  // code goes here
+  if (!node) return array;
+  array = postorderTraverse(node.left, array);
+  array = postorderTraverse(node.right, array);
+  array.push(node.value);
+  return array;
 };
 
 // unit tests
 // do not modify the below code
-test.only("depth-first traversals", function () {
+test("depth-first traversals", function () {
   const tree = {
     value: 8,
     left: {
