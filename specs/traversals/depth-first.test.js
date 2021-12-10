@@ -1,5 +1,14 @@
 const preorderTraverse = (node, array) => {
   // code goes here
+  if (!node) return array;
+  array.push(node.value);
+
+  const leftNums = preorderTraverse(node.left);
+  array.push(...leftNums);
+  const rightNums = preorderTraverse(node.right);
+  array.push(...rightNums);
+
+  return array;
 };
 
 const inorderTraverse = (node, array) => {
@@ -12,7 +21,7 @@ const postorderTraverse = (node, array) => {
 
 // unit tests
 // do not modify the below code
-test.skip("depth-first traversals", function () {
+test.only("depth-first traversals", function () {
   const tree = {
     value: 8,
     left: {
