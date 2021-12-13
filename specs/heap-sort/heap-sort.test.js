@@ -46,7 +46,7 @@ const heapify = (array, index, heapSize) => {
     largestValueIndex = right;
   }
 
-  // Does something need to happen
+  // Does something need to happen - base case...
   if (largestValueIndex !== index) {
     swapPlace(index, largestValueIndex, array);
     heapify(array, largestValueIndex, heapSize);
