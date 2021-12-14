@@ -70,7 +70,7 @@ const findMostCommonTitle = (myId, degreesOfSeparation) => {
 
 // unit tests
 // do not modify the below code
-describe.only("graph tests", function () {
+describe("graph tests", function () {
   describe("findMostCommonTitle", function () {
     test.only("user 30 with 2 degrees of separation", () => {
       expect(findMostCommonTitle(30, 2)).toBe("Librarian");
