@@ -16,7 +16,73 @@
 // the way I did. however feel free to use it if you'd like
 const logMaze = require("./logger");
 
-function findShortestPathLength(maze, [xA, yA], [xB, yB]) {}
+const NO_ONE = 0;
+const BY_A = 1;
+const BY_B = 2;
+
+function generateVisited(maze) {
+  const visited = [];
+  for (let y = 0; y < maze.length; y++) {
+    const yAxis = [];
+    for (let x = 0; x < maze[y].length; x++) {
+      const coordinate = {
+        closed: maze[y][x] === 1,
+        length: 0,
+        openedBy: NO_ONE
+      };
+
+      yAxis.push(coordinate);
+    }
+    visited.push(yAxis);
+  }
+  return visited;
+}
+
+function findShortestPathLength(maze, [xA, yA], [xB, yB]) {
+  const visited = generateVisited(maze);
+
+  visited[yA][xA].openedBy = BY_A;
+  visited[yB][xB].openedBy = BY_B;
+
+  let aQueue = [visited[yA][xA]];
+  let bQueue = [visited[yB][xB]];
+  let iteration = 0;
+
+  while (aQueue.length && bQueue.length) {
+    iteration++;
+  }
+
+  return -1;
+}
+
+function getNeighbors(visited, x, y) {
+  const neighbors = [];
+
+  // First cond of IF checks if inbounds
+  // Second cond check if it is closed
+
+  // Get left neighbor
+  if (y - 1 >= 0 && !visited[y - 1][x].closed) {
+    neighbors.push(visited[y - 1][x]);
+  }
+
+  // Go right
+  if (y + 1 < visited[0].length && !visited[y + 1][x].closed) {
+    neighbors.push(visited[y + 1][x]);
+  }
+
+  // up
+  if (x - 1 >= 0 && !visited[y][x - 1].closed) {
+    neighbors.push(visited[y][x - 1]);
+  }
+
+  // Down
+  if (x + 1 < visited.length && !visited[y][x + 1].closed) {
+    neighbors.push(visited[y][x + 1]);
+  }
+
+  return neighbors;
+}
 
 // there is a visualization tool in the completed exercise
 // it requires you to shape your objects like I did
@@ -24,14 +90,14 @@ function findShortestPathLength(maze, [xA, yA], [xB, yB]) {}
 
 // unit tests
 // do not modify the below code
-describe.skip("pathfinding – happy path", function () {
+describe("pathfinding – happy path", function () {
   const fourByFour = [
     [2, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 2]
   ];
-  it("should solve a 4x4 maze", () => {
+  it.only("should solve a 4x4 maze", () => {
     expect(findShortestPathLength(fourByFour, [0, 0], [3, 3])).toEqual(6);
   });
 
