@@ -28,7 +28,9 @@ function generateVisited(maze) {
       const coordinate = {
         closed: maze[y][x] === 1,
         length: 0,
-        openedBy: NO_ONE
+        openedBy: NO_ONE,
+        x,
+        y
       };
 
       yAxis.push(coordinate);
@@ -69,6 +71,28 @@ function findShortestPathLength(maze, [xA, yA], [xB, yB]) {
         neighbor.length = iteration;
         neighbor.openedBy = BY_A;
         aQueue.push(neighbor);
+      }
+    }
+
+    let bNeighbours = [];
+
+    // gather b neighbors
+    while (bQueue.length) {
+      const coordinate = bQueue.shift();
+      bNeighbours = bNeighbours.concat(
+        getNeighbors(visited, coordinate.x, coordinate.y)
+      );
+    }
+
+    // process b neighbors
+    for (let i = 0; i < bNeighbours.length; i++) {
+      const neighbor = bNeighbours[i];
+      if (neighbor.openedBy === BY_A) {
+        return neighbor.length + iteration;
+      } else if (neighbor.openedBy === NO_ONE) {
+        neighbor.length = iteration;
+        neighbor.openedBy = BY_B;
+        bQueue.push(neighbor);
       }
     }
   }
@@ -118,7 +142,8 @@ describe("pathfinding – happy path", function () {
     [0, 0, 0, 0],
     [0, 0, 0, 2]
   ];
-  it.only("should solve a 4x4 maze", () => {
+
+  it("should solve a 4x4 maze", () => {
     expect(findShortestPathLength(fourByFour, [0, 0], [3, 3])).toEqual(6);
   });
 

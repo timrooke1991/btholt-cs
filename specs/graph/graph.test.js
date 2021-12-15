@@ -72,7 +72,7 @@ const findMostCommonTitle = (myId, degreesOfSeparation) => {
 // do not modify the below code
 describe("graph tests", function () {
   describe("findMostCommonTitle", function () {
-    test.only("user 30 with 2 degrees of separation", () => {
+    test("user 30 with 2 degrees of separation", () => {
       expect(findMostCommonTitle(30, 2)).toBe("Librarian");
     });
 
