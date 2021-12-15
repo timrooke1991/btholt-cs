@@ -50,6 +50,27 @@ function findShortestPathLength(maze, [xA, yA], [xB, yB]) {
 
   while (aQueue.length && bQueue.length) {
     iteration++;
+    let aNeighbours = [];
+
+    // gather A neighbors
+    while (aQueue.length) {
+      const coordinate = aQueue.shift();
+      aNeighbours = aNeighbours.concat(
+        getNeighbors(visited, coordinate.x, coordinate.y)
+      );
+    }
+
+    // process a neighbors
+    for (let i = 0; i < aNeighbours.length; i++) {
+      const neighbor = aNeighbours[i];
+      if (neighbor.openedBy === BY_B) {
+        return neighbor.length + iteration;
+      } else if (neighbor.openedBy === NO_ONE) {
+        neighbor.length = iteration;
+        neighbor.openedBy = BY_A;
+        aQueue.push(neighbor);
+      }
+    }
   }
 
   return -1;
