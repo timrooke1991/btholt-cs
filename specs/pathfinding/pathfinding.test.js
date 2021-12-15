@@ -16,9 +16,7 @@
 // the way I did. however feel free to use it if you'd like
 const logMaze = require("./logger");
 
-function findShortestPathLength(maze, [xA, yA], [xB, yB]) {
-  // code goes here
-}
+function findShortestPathLength(maze, [xA, yA], [xB, yB]) {}
 
 // there is a visualization tool in the completed exercise
 // it requires you to shape your objects like I did
