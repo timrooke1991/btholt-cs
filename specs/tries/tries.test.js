@@ -13,9 +13,6 @@ const { CITY_NAMES } = require("./cities.js");
 const _ = require("lodash"); // needed for unit tests
 
 class Node {
-  // you don't have to use this data structure, this is just how I did it
-  // you'll almost definitely need more methods than this and a constructor
-  // and instance variables
   complete(string) {
     return [];
   }
@@ -25,7 +22,10 @@ const createTrie = (words) => {
   // you do not have to do it this way; this is just how I did it
   const root = new Node("");
 
-  // more code should go here
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    root.add(word.toLowerCase());
+  }
 
   return root;
 };
