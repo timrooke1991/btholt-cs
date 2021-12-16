@@ -62,14 +62,14 @@ class Node {
   }
 
   complete(string) {
-    let completions = [];
+    let suggestions = [];
 
     for (let i = 0; i < this.children.length; i++) {
       const child = this.children[i];
-      completions = completions.concat(child._complete(string, "", []));
+      suggestions = suggestions.concat(child._complete(string, "", []));
     }
 
-    return completions;
+    return suggestions;
   }
 }
 
