@@ -17,21 +17,15 @@ class BloomFilter {
     this._array = new Array(100).fill(0);
   }
   add(string) {
-    const h1Index = h1(string);
-    const h2Index = h2(string);
-    const h3Index = h3(string);
-    this._array[h1Index] = 1;
-    this._array[h2Index] = 1;
-    this._array[h3Index] = 1;
+    this._array[h1(string)] = 1;
+    this._array[h2(string)] = 1;
+    this._array[h3(string)] = 1;
   }
   contains(string) {
-    const h1Index = h1(string);
-    const h2Index = h2(string);
-    const h3Index = h3(string);
-    return (
-      this._array[h1Index] === 1 &&
-      this._array[h2Index] === 1 &&
-      this._array[h3Index] === 1
+    return Boolean(
+      this._array[h1(string)] &&
+        this._array[h2(string)] &&
+        this._array[h3(string)]
     );
   }
 }
