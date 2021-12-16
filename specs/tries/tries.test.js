@@ -86,7 +86,7 @@ const createTrie = (words) => {
 
 // unit tests
 // do not modify the below code
-describe.only("tries", function () {
+describe("tries", function () {
   test("dataset of 10 – san", () => {
     const root = createTrie(CITY_NAMES.slice(0, 10));
     const completions = root.complete("san");
