@@ -48,10 +48,8 @@ class Node {
   }
 
   add(value) {
-    // decide to go left or right
     if (value < this.value) {
       // go left
-
       if (this.left) {
         this.left.add(value);
       } else {
@@ -140,7 +138,6 @@ class Node {
     ) {
       this.height = this.left.height + 1;
     } else {
-      //if (!this.left || this.right.height > this.left.height)
       this.height = this.right.height + 1;
     }
   }
